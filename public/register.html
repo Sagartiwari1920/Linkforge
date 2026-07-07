@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - LinkForge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section class="auth-screen">
+  <div class="auth-shell">
+    <div class="auth-brand">
+      <div class="brand-mark">
+        <span class="chevron">›</span><span class="chevron">›</span><span class="chevron">›</span>
+      </div>
+      <h1 class="brand-title">LinkForge</h1>
+      <p class="brand-tag">Create your account.</p>
+    </div>
+
+    <div class="auth-form-panel">
+      <h2 class="auth-heading">Create Account</h2>
+      <div id="authAlert" class="alert" hidden></div>
+
+      <form id="registerForm" class="auth-form" novalidate>
+        <label class="field">
+          <span class="field-label">Full name</span>
+          <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Email</span>
+          <input type="email" name="emailId" placeholder="you@example.com" autocomplete="email" required>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Password</span>
+          <input type="password" name="password" placeholder="••••••••" autocomplete="new-password" minlength="6" required>
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span class="field-label">Age</span>
+            <input type="number" name="age" placeholder="18" min="18" max="70">
+          </label>
+
+          <label class="field">
+            <span class="field-label">Gender</span>
+            <select name="gender">
+              <option value="">Prefer not to say</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Others">Others</option>
+            </select>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Create account</button>
+      </form>
+
+      <form id="otpForm" class="auth-form" hidden novalidate>
+        <div class="otp-info">
+          <h2>Verify Email</h2>
+          <p>Enter the 6-digit OTP sent to <strong id="otpEmail"></strong></p>
+        </div>
+
+        <label class="field">
+          <span class="field-label">OTP</span>
+          <input type="text" name="otp" placeholder="Enter 6-digit OTP" maxlength="6" inputmode="numeric" autocomplete="one-time-code" required>
+        </label>
+
+        <button type="submit" class="btn btn-primary btn-block">Verify OTP</button>
+        <button type="button" id="backToRegister" class="btn btn-ghost btn-block">Back</button>
+      </form>
+
+      <p class="auth-switch">
+        Already have an account?
+        <a href="login.html">Log in</a>
+      </p>
+    </div>
+  </div>
+</section>
+<script src="script.js"></script>
+</body>
+</html>

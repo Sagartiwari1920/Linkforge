@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - LinkForge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section class="auth-screen">
+  <div class="auth-shell">
+    <div class="auth-brand">
+      <div class="brand-mark">
+        <span class="chevron">›</span><span class="chevron">›</span><span class="chevron">›</span>
+      </div>
+      <h1 class="brand-title">LinkForge</h1>
+      <p class="brand-tag">Welcome back.</p>
+    </div>
+    <div class="auth-form-panel">
+      <h2 style="margin-bottom: 20px; font-family: var(--font-display);">Log In</h2>
+      <div id="authAlert" class="alert" hidden></div>
+      <form id="loginForm" class="auth-form" novalidate>
+        <label class="field">
+          <span class="field-label">Email</span>
+          <input type="email" name="emailId" placeholder="your-email@gmail.com" autocomplete="email" required>
+        </label>
+        <label class="field">
+          <span class="field-label">Password</span>
+          <input type="password" name="password" placeholder="••••••••" autocomplete="current-password" required>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+      </form>
+      <p style="margin-top: 20px; text-align: center; font-size: 0.85rem; color: var(--text-dim);">
+        Don't have an account? <a href="register.html" style="color: var(--accent); text-decoration: none;">Sign up here</a>
+      </p>
+    </div>
+  </div>
+</section>
+<script src="script.js"></script>
+</body>
+</html>

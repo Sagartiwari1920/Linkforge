@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - LinkForge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="appScreen" class="app-screen">
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="brand-mark small">
+        <span class="chevron">›</span><span class="chevron">›</span>
+      </div>
+      <span class="app-title">LinkForge</span>
+      <div class="header-spacer"></div>
+      <span id="userEmail" class="user-email"></span>
+      <button id="logoutBtn" class="btn btn-ghost">Log out</button>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="card shorten-card">
+      <h2 class="card-title">Shorten a URL</h2>
+      <p class="card-subtitle">Paste any http(s) link to get a short, shareable code.</p>
+      <form id="shortenForm" class="shorten-form" novalidate>
+        <input type="text" id="urlInput" name="originalUrl" placeholder="https://example.com/very/long/url..." autocomplete="off">
+        <button type="submit" class="btn btn-primary" id="shortenBtn">Shorten</button>
+      </form>
+      <div id="shortenAlert" class="alert" hidden></div>
+      <div id="result" class="result-box" hidden></div>
+    </div>
+
+    <div class="card analytics-card">
+      <div class="analytics-header">
+        <div>
+          <h2 class="card-title">Your links</h2>
+          <p class="card-subtitle"><span id="totalCount">0</span> link(s) tracked</p>
+        </div>
+        <button id="refreshBtn" class="btn btn-ghost">↻ Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table id="analyticsTable">
+          <thead>
+            <tr>
+              <th>Original URL</th>
+              <th>Short code</th>
+              <th>Clicks</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+          <tbody id="analyticsBody">
+            <tr><td colspan="4" class="empty-msg">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</section>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+<script src="script.js"></script>
+</body>
+</html>
