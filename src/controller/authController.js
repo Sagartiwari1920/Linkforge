@@ -6,10 +6,36 @@ const User=require("../models/users");
 const redisClient = require("../config/redis");
 const crypto = require("crypto");
 const mailer = require("../config/emailSender");
+const dns = require("dns").promises;
+
+
 
 const register = async (req, res, next) => {
   try {
     const { name, age, gender, emailId, password } = req.body;
+
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailId)) {
+      return res.status(400).json({
+        message: "Invalid email format"
+      });
+    }
+
+    // Check the domain can actually receive mail
+    const domain = emailId.split("@")[1];
+    try {
+      const mxRecords = await dns.resolveMx(domain);
+      if (!mxRecords || mxRecords.length === 0) {
+        return res.status(400).json({
+          message: "Email domain does not exist or cannot receive mail"
+        });
+      }
+    } catch (dnsErr) {
+      return res.status(400).json({
+        message: "Email domain does not exist or cannot receive mail"
+      });
+    }
 
     // Check if already registered
     const existingUser = await User.findOne({ emailId });
@@ -47,7 +73,7 @@ const register = async (req, res, next) => {
       300
     );
 
-    // Send OTP
+    
     // Send OTP
     try {
       await mailer.sendMail({

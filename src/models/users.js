@@ -21,13 +21,14 @@ const userSchema = new Schema({//to apply validation we have to write our schema
       enum:["Male","Female","Others"]
     },
 
-    emailId: {
-      type:String,
-      required:true,
-      unique:true,
-      trim:true, 
-      lowercase:true
-    },
+  emailId: {
+  type: String,
+  required: true,
+  unique: true,
+  trim: true,
+  lowercase: true,
+  match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"]
+},
 
     password: {
       type:String,
