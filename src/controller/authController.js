@@ -48,9 +48,9 @@ const register = async (req, res, next) => {
     );
 
     // Send OTP
+    // Send OTP
     try {
       await mailer.sendMail({
-        from: `"LinkForge" <${process.env.GMAIL_USER}>`,
         to: emailId,
         subject: "Verify your email",
         text: `Your verification OTP is ${otp}. It expires in 5 minutes.`

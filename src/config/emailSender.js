@@ -1,12 +1,16 @@
-const nodemailer = require("nodemailer");
+const { BrevoClient } = require("@getbrevo/brevo");
 
-// Gmail SMTP transporter 
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD
-    }
+const brevo = new BrevoClient({
+    apiKey: process.env.BREVO_API_KEY
 });
 
-module.exports = transporter;
+async function sendMail({ to, subject, text }) {
+    await brevo.transactionalEmails.sendTransacEmail({
+        sender: { email: process.env.GMAIL_USER, name: "LinkForge" },
+        to: [{ email: to }],
+        subject,
+        textContent: text
+    });
+}
+
+module.exports = { sendMail };
