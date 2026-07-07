@@ -2,11 +2,7 @@
 
 A full-stack URL shortener built with **Node.js**, **Express**, **MongoDB**, and **Redis** — register with email OTP verification, log in securely with JWT, paste a long URL and get a short, shareable link instantly, complete with QR code generation and a live per-user click-analytics dashboard.
 
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
-[![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)](https://jwt.io/)
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen?style=for-the-badge&logo=render&logoColor=white)](https://linkforge-1rb1.onrender.com)
 
 ---
 
@@ -36,7 +32,7 @@ A full-stack URL shortener built with **Node.js**, **Express**, **MongoDB**, and
 | Cache / Session store | Redis (OTP staging, rate limiting, token blacklist) |
 | Authentication | JWT (`jsonwebtoken`) + HTTP cookies (`cookie-parser`) |
 | Password hashing | bcrypt |
-| Email delivery | Nodemailer (Gmail SMTP) |
+| Email delivery | Brevo API (HTTPS-based, avoids SMTP port issues on cloud hosts) |
 | Short code generation | ShortID |
 | QR code | qrcode |
 | Environment config | dotenv |
@@ -250,7 +246,7 @@ http://localhost:5000
 | `REDIS_PORT` | Redis port | `13648` |
 | `JWT_KEY` | Secret used to sign JWTs — use a long, random string in production | — |
 | `GMAIL_USER` | Gmail address used to send OTP emails | `you@gmail.com` |
-| `GMAIL_APP_PASSWORD` | Gmail App Password (not your normal password) | 16-character string |
+| `BREVO_API` | Api of email otp provider | string |
 
 > ⚠️ Never commit your real `.env` file. `GMAIL_APP_PASSWORD` and `JWT_KEY` in particular should be treated as sensitive secrets — if any of them are ever exposed, rotate them immediately.
 
